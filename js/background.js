@@ -1,8 +1,6 @@
 // background.js
 // coded by azrafe7
 
-console.log("Background started!");
-
 // manifest object
 var manifest = {};
 

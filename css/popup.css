@@ -24,3 +24,7 @@ a {
 a:hover {
 	text-decoration: underline;
 }
+
+#debug-wrapper {
+	margin-top: 10px;
+}
