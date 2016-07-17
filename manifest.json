@@ -1,0 +1,22 @@
+{
+   "background": {
+      "scripts": [ "js/background.js" ]
+   },
+   "description": "Open YouTube videos in VLC.",
+   "icons": {
+      "128": "icons/icon-128.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+   },
+   "manifest_version": 2,
+   "minimum_chrome_version": "18.0",
+   "name": "VLC 4 YouTube (test)",
+   "page_action": {
+      "default_icon": "icons/icon-19.png",
+      "default_popup": "popup.html",
+      "default_title": "Open this video in VLC"
+   },
+   "permissions": [ "tabs", "http://*.youtube.com/*", "https://*.youtube.com/*", "http://localhost:8080/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.1.3"
+}

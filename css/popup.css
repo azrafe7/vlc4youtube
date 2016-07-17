@@ -1,0 +1,26 @@
+body {
+	font-family: 'Segoe UI', Verdana, Arial, sans-serif;
+	font-size: .7em;
+	color: white;
+	background-color: #333;
+	margin: 2 2;
+	padding: 0 0;
+	min-width: 350px;
+}
+
+#title {
+	font-size: 1.1em;
+	font-weight: bold;
+	background-color: #333;
+	margin-bottom: 7px;
+}
+
+a {
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
