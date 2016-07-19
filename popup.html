@@ -6,20 +6,27 @@
 	<link type="text/css" href="css/popup.css" rel="stylesheet" /> 
 </head>
 <body >
-	<div id="title"></div>
+	<div id="header">
+		<span id="title"></span>
+		<span id="doom"><small><b>('\'</b> to hack/debug)</small></span>
+	</div>
 	
-	<div id="msg">
+	<div id="no-interface">
 		<div>VLC http interface is not activated.</div>
 		<div>Read <a href="http://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/">this</a> for instructions.</div>
 	</div>
 	
-	<div id="added"></div>
+	<div id="msg"></div>
 	
 	<!-- testing stuff -->
 	<div id="debug-wrapper">
-		<input type="text" id="path" />
+		<input type="text" id="url" />
 		<button id="sendBtn">send</button>
 		<button id="openBtn">open</button>		
+		<button id="itagBtn">itag</button>		
+		
+		<div id="streams">
+		</div>
 	</div>
 	
 	<script type="text/javascript" src="js/popup.js"></script>
