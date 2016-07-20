@@ -214,7 +214,7 @@ function main() {
 		$("#videoUrl").val(url);
 		
 		// using a little timeout here, so the user can press '\' to choose the stream
-		setTimeout(function() {	findStreamsFor(url, DEBUG); }, 1000);
+		setTimeout(function() {	findStreamsFor(url, DEBUG); }, 700);
 	});
 }
 
