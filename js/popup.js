@@ -7,6 +7,7 @@ var url;
 
 var DEBUG = false;
 var VLC_INTERFACE = "http://localhost:8080/requests/";
+var EXTENSION_URL = "https://chrome.google.com/webstore/detail/vlc-4-youtube-beta/jldiailifbdkepgpcojllmkbakleicab?hl=en";
 
 var timer;
 var info;
@@ -157,6 +158,7 @@ function main() {
 	$("#stream-info").hide();
 	
 	$("#title").html("<b>" + bgPage.manifest.name + " v" + bgPage.manifest.version + "</b>");
+	$("#title").bind("click", function() { chrome.tabs.create({url:EXTENSION_URL}) }); // goto extension page on the webstore
 
 	
 	// bind events

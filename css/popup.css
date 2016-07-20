@@ -12,6 +12,7 @@ body {
 	font-size: 1.1em;
 	background-color: #333;
 	margin-bottom: 7px;
+	cursor: pointer;
 }
 
 a {
@@ -28,8 +29,12 @@ a:hover {
 	margin-top: 10px;
 }
 
-#streams {
+#streams-wrapper {
 	margin-top: 10px;
+}
+
+#streams {
+	margin-left: 5px;
 }
 
 #vlcUrl {
