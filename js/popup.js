@@ -170,6 +170,13 @@ function main() {
 		}
 	});
 
+	$("#videoUrl").bind("keyup", function(event) {
+		if (event.keyCode == 13) {
+			log("load");
+			$("#loadBtn").click();
+		}
+	});
+
 	$("body").bind("keyup", function(event) {
 		if (event.keyCode == 220 && document.activeElement != $("#vlcUrl").get(0)) { // doom console '\'
 			toggleDoomConsole();
@@ -207,7 +214,7 @@ function main() {
 		$("#videoUrl").val(url);
 		
 		// using a little timeout here, so the user can press '\' to choose the stream
-		setTimeout(function() {	findStreamsFor(url, DEBUG); }, 500);
+		setTimeout(function() {	findStreamsFor(url, DEBUG); }, 1000);
 	});
 }
 
