@@ -32,6 +32,9 @@ a:hover {
 	margin-top: 10px;
 }
 
+#vlcUrl {
+}
+
 #title {
 	float: left;
 }
@@ -40,6 +43,20 @@ a:hover {
 	float: right;
 }
 
-#msg, #no-interface {
+#msg, #no-interface, #stream-info {
 	clear: both;
+}
+
+input.url {
+	width: 82%;
+	margin-bottom: 4px;
+}
+
+button {
+	width: 14%;
+	cursor: pointer;
+}
+
+input, button, input[input-type="button"] {
+    font-size: smaller;
 }

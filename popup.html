@@ -17,14 +17,28 @@
 		<div>Read <a href="http://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/">this</a> for instructions.</div>
 	</div>
 	
+	<div id="stream-info"></div>
 	<div id="msg"></div>
 	
 	<!-- testing stuff -->
 	<div id="debug-wrapper">
-		<input type="text" id="url" />
-		<button id="sendBtn">send</button>
-		<button id="loadBtn">reload</button>		
-		<button id="itagBtn">itag</button>		
+		<input type="text" class=url id="vlcUrl" />
+		<button id="sendBtn" title="send string to VLC">send</button>
+		
+		<input type="text" class=url id="videoUrl" />
+		<button id="loadBtn" title="retrieve streams">load</button>		
+		
+		<!--
+		<input type="text" class=url id="subUrl" />
+		<button id="subBtn" title="load subtitle">sub</button>
+		-->
+		
+		<div class="controls">
+			<button id="prevBtn" title="previous in VLC">prev</button>		
+			<button id="pauseBtn" title="pause/unpause VLC">pause</button>		
+			<button id="nextBtn" title="next in VLC">next</button>		
+			<button id="clearBtn" title="clear playlist in VLC">clear</button>		
+		</div>
 		
 		<div id="streams">
 		</div>
