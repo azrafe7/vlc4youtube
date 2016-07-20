@@ -65,3 +65,13 @@ button {
 input, button, input[input-type="button"] {
     font-size: smaller;
 }
+
+#ico {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+
+#doom .key {
+	cursor: pointer;
+}
