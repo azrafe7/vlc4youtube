@@ -88,8 +88,8 @@ function onInfoSuccess(xhr, data, probeOnly) {
 	if (data) info = data;
 	else info = JSON.parse(xhr.response).info;
 	
-	// insert info for current plain url
-	info.formats.push({format:"current page url (probably not working)", url:url});
+	// insert info for current page (plain url)
+	info.formats.push({format:"current page url", url:url});
 	
 	var best = info.formats[0];
 	log("Info (all streams):", info);
@@ -114,7 +114,9 @@ function onInfoSuccess(xhr, data, probeOnly) {
 	}
 	
 	// play
-	if (!probeOnly) play(best.url, { mustEncode: true });
+	if (!probeOnly) {
+		play(best.url, { mustEncode: true });
+	}
 	
 	//$("#vlcUrl").val(VLC_INTERFACE + "status.json?command=in_play&input=" + encodeURIComponent(url));
 }
@@ -214,6 +216,7 @@ function main() {
 		$("#videoUrl").val(url);
 		
 		// using a little timeout here, so the user can press '\' to choose the stream
+		setMessage("Probing VLC http interface...", true).show();
 		setTimeout(function() {	findStreamsFor(url, DEBUG); }, 700);
 	});
 }
