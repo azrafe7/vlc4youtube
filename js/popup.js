@@ -165,7 +165,7 @@ function main() {
 	$("#stream-info").hide();
 	
 	$("#title").html("<b>" + bgPage.manifest.name + " v" + bgPage.manifest.version + "</b>");
-	$("#title").bind("click", function() { chrome.tabs.create({url:EXTENSION_URL}) }); // goto extension page on the webstore
+	$("#webstore").bind("click", function() { chrome.tabs.create({url:EXTENSION_URL}) }); // goto extension page on the webstore
 	$("#doom .key").bind("click", function() { toggleDoomConsole(); }); // toggle doom console when clicking '\'
 	
 	
