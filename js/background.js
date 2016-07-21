@@ -23,7 +23,7 @@ function readManifestFile() {
 
 // show extension icon if on a video page
 function checkForValidUrl(tabId, changeInfo, tab) {
-	if (tab.url.indexOf("watch?") >= 0 || tab.url.indexOf("/v/") >= 0) {
+	if (tab.url && (tab.url.indexOf("watch?") >= 0 || tab.url.indexOf("/v/") >= 0)) {
 		console.log(tab);
 		currentTab = tab;
 		chrome.pageAction.show(tabId);
