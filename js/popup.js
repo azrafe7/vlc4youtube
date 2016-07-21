@@ -62,7 +62,7 @@ function addFormatFieldTo(item) {
 				  item.type.match(/.*?;/) + " " +
 				  (item.resolution || "[audio only]") + " " +
 				  (item.audioEncoding ? "" : "[video only]") + 
-				  " (" + (item.quality || item.quality_label || "") + ")";
+				  " (" + (item.quality || item.quality_label || (item.audioBitrate + "br")) + ")";
 	return item;
 }
 
@@ -71,34 +71,43 @@ function findStreamsFor(url, probeOnly) {
 	
 	sendRequest(VLC_INTERFACE + "status.json", onVlcError, function(xhr) { // probe VLC interface
 		interfaceFound();
-		setMessage("Retrieving best quality stream url...", true);
+		setMessage("Retrieving preferred quality stream url...", true);
 		ytdl.getInfo(url, function(error, info) { // get video info
 			if (error) {
 				onInfoError({statusText:error});
+				return;
 			}
 			
-			for (i in info.formats) addFormatFieldTo(info.formats[i]);
+			populateStreams(null, info);
+			
+			var quality = "highest";
+			var filter = "video";
+			
+			var format = ytdl.utils.chooseFormat(info.formats, {quality: quality, filter: filter});
+			// if found, make it the first in the array
+			if (format && !(format instanceof Error)) {
+				info.formats.splice(info.formats.indexOf(format), 1);
+				info.formats.unshift(format);
+			} else {
+				onInfoError({statusText:format.message});
+				return;
+			}
 			
 			onInfoSuccess(null, info, probeOnly);
 		});
 	});
 }
 
-function onInfoSuccess(xhr, data, probeOnly) {
+function populateStreams(xhr, data) {
 	if (data) info = data;
 	else info = JSON.parse(xhr.response).info;
+	
+	for (i in info.formats) addFormatFieldTo(info.formats[i]);
 	
 	// insert info for current page (plain url)
 	info.formats.push({format:"current page url", url:url});
 	
-	var best = info.formats[0];
 	log("Info (all streams):", info);
-	log("Best stream:", best.format, best.url);
-	
-	format = best.format;
-	
-	setTitle(format, info.title);
-	setMessage("", false);
 	
 	// populate stream links (debug)
 	var streams = $("#streams").empty();
@@ -117,6 +126,17 @@ function onInfoSuccess(xhr, data, probeOnly) {
 		});
 		streams.append(div);
 	}
+}
+
+function onInfoSuccess(xhr, data, probeOnly) {
+	
+	var best = info.formats[0];
+	log("Preferred stream:", best.format, best.url);
+	
+	format = best.format;
+	
+	setTitle(format, info.title);
+	setMessage("", false);
 	
 	// play
 	if (!probeOnly) {
@@ -128,10 +148,11 @@ function onInfoSuccess(xhr, data, probeOnly) {
 
 function onInfoError(xhr) {
 	log(xhr.status, xhr.statusText, xhr);
-	setMessage("No stream found. Sending current url...", true);
-	setTimeout(function() {
+	setMessage("No matching stream found (" + xhr.statusText + ").", true);
+	/*setTimeout(function() {
+		setTitle("unknown (current page url)");
 		play(url, { mustEncode: true }); // try sending curr url as is
-	}, 2000);
+	}, 2000);*/
 }
 
 function onVlcSuccess(xhr) {
