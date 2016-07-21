@@ -172,8 +172,8 @@ function main() {
 
 	$("#videoUrl").bind("keyup", function(event) {
 		if (event.keyCode == 13) {
-			log("load");
-			$("#loadBtn").click();
+			log("find");
+			$("#findBtn").click();
 		}
 	});
 
@@ -185,7 +185,7 @@ function main() {
 	
 	// buttons
 	$("#sendBtn").bind("click", function() { sendRequest($("#vlcUrl").val()); });
-	$("#loadBtn").bind("click", function() { 
+	$("#findBtn").bind("click", function() { 
 		$("#streams").empty();
 		url = $("#videoUrl").val();
 		findStreamsFor(url, true);
