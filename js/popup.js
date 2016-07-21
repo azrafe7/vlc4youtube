@@ -104,7 +104,12 @@ function onInfoSuccess(xhr, data, probeOnly) {
 	var streams = $("#streams").empty();
 	for (o in info.formats) {
 		var i = info.formats[o];
-		var a = $("<a>").attr({"href":i.url, "data-format":i.format}).text(i.format);
+		var a = $("<a>").attr({
+			"href":i.url, 
+			"data-format":i.format,
+			"title":ellipsizeMiddle(i.url, 80)
+		}).text(i.format);
+		
 		var div = $("<div>").append(a);
 		a.bind("click", function() {
 			setTitle($(this).attr("data-format"));
@@ -227,6 +232,22 @@ function toggleDoomConsole() {
 	log("debug");
 	$("#debug-wrapper").toggle();
 }				
+
+function ellipsizeMiddle(str, maxLength) {
+	var ellipsis = "...";
+	var strLen = str.length;
+	if (strLen <= maxLength)
+		return str;
+
+	var ellipsisLen = ellipsis.length;
+	if (maxLength < ellipsisLen) return ellipsis.substring(0, maxLength);
+
+	var maxStrLen = maxLength - ellipsisLen;
+	var leftLen = Math.round(maxStrLen / 2);
+	var rightLen = maxStrLen - leftLen;
+
+	return str.substring(0, leftLen) + ellipsis + str.substr(-rightLen);
+}
 
 function log(...args) {
 	if (DEBUG) console.log.apply(console, args);
