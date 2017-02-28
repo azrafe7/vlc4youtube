@@ -52,9 +52,9 @@ function setMessage(msg, hideTitle) {
 	return $msg;
 }
 
-function play(url, options) {
+function play(url, options, title) {
 	var urlParam = (options && options.mustEncode) ? encodeURIComponent(url) : url;
-	sendRequest(VLC_INTERFACE + "status.json?command=in_play&input=" + urlParam);
+	sendRequest(VLC_INTERFACE + "status.json?command=in_play&input=" + urlParam + "&name=" + encodeURIComponent(title));
 }
 
 function addFormatFieldTo(item) {
@@ -122,7 +122,7 @@ function populateStreams(xhr, data) {
 		var div = $("<div>").append(a);
 		a.bind("click", function() {
 			setTitle($(this).attr("data-format"));
-			play($(this).attr("href"), { mustEncode: true });
+			play($(this).attr("href"), { mustEncode: true }, info.title);
 		});
 		streams.append(div);
 	}
@@ -140,7 +140,7 @@ function onInfoSuccess(xhr, data, probeOnly) {
 	
 	// play
 	if (!probeOnly) {
-		play(best.url, { mustEncode: true });
+		play(best.url, { mustEncode: true }, info.title);
 	}
 	
 	//$("#vlcUrl").val(VLC_INTERFACE + "status.json?command=in_play&input=" + encodeURIComponent(url));
@@ -151,7 +151,7 @@ function onInfoError(xhr) {
 	setMessage("No matching stream found (" + xhr.statusText + ").", true);
 	/*setTimeout(function() {
 		setTitle("unknown (current page url)");
-		play(url, { mustEncode: true }); // try sending curr url as is
+		play(url, { mustEncode: true }, url); // try sending curr url as is
 	}, 2000);*/
 }
 
