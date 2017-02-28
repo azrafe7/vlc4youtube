@@ -1,0 +1,4 @@
+package/*/
+package/*.*
+!package/.gitkeep
+package.zip
