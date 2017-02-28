@@ -53,8 +53,15 @@ function setMessage(msg, hideTitle) {
 }
 
 function play(url, options, title) {
+  title = title || ellipsizeMiddle(url, 80);
 	var urlParam = (options && options.mustEncode) ? encodeURIComponent(url) : url;
 	sendRequest(VLC_INTERFACE + "status.json?command=in_play&input=" + urlParam + "&name=" + encodeURIComponent(title));
+}
+
+function enqueue(url, options, title) {
+  title = title || ellipsizeMiddle(url, 80);
+	var urlParam = (options && options.mustEncode) ? encodeURIComponent(url) : url;
+	sendRequest(VLC_INTERFACE + "status.json?command=in_enqueue&input=" + urlParam + "&name=" + encodeURIComponent(title));
 }
 
 function addFormatFieldTo(item) {
@@ -229,6 +236,11 @@ function main() {
 	});
 	$("#clearBtn").bind("click", function() { 
 		sendRequest(VLC_INTERFACE + "status.json?command=pl_empty");
+	});
+	$("#enqueueBtn").bind("click", function() { 
+    if (info && info.formats) {
+      enqueue(info.formats[0].url, { mustEncode: true }, info.title);
+    }
 	});
 
 	
