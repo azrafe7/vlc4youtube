@@ -1,9 +1,13 @@
 // popup
 // coded by azrafe7
 
+'use strict';
+
+var self = this;
 var bgPage = chrome.extension.getBackgroundPage();	// ref to background page object
 var currTab;
 var url;
+var xhr;
 
 var DEBUG = false;
 var VLC_INTERFACE = "http://localhost:8080/requests/";
@@ -41,12 +45,12 @@ function sendRequest(url, errorCallback, successCallback) {
 }
 
 function setTitle(format, title) {
-	this.format = format || this.format;
-	this.title = title || this.title;
+	self.format = format || self.format;
+	self.title = title || self.title;
 	
-	video = "Format: " + "<b>" + format + "</b><br>" + 
-			"Title: " + "<b>" + title + "</b><br>";
-	$("#stream-info").html(video);	
+	self.video = "Format: " + "<b>" + self.format + "</b><br>" + 
+			"Title: " + "<b>" + self.title + "</b><br>";
+	$("#stream-info").html(self.video);	
 }
 
 function setMessage(msg, hideTitle) {
@@ -122,7 +126,7 @@ function populateStreams(xhr, data) {
 	
 	// populate stream links (debug)
 	var streams = $("#streams").empty();
-	for (o in info.formats) {
+	for (var o in info.formats) {
 		var i = info.formats[o];
 		var a = $("<a>").attr({
 			"href":i.url, 
@@ -175,7 +179,7 @@ function onVlcSuccess(xhr) {
 	setMessage("<br>Command sent to VLC" + lastCommandStr + ".", false).hide().fadeIn(400, "swing");
 	
 	$("#no-interface").hide();
-	if (!DEBUG) timer = setTimeout(function() { window.close(); }, 4000); // close popup
+	if (!DEBUG) self.timer = setTimeout(function() { window.close(); }, 4000); // close popup
 }
 
 function onVlcError(xhr) {
@@ -191,7 +195,9 @@ function interfaceFound(xhr) {
 
 // main function (executed when the DOM is ready)
 function main() {
-	$("a").bind("click", function() { chrome.tabs.create({url:$(this).attr("href")}); }); // enable interface how-to link
+	$("#no-interface a").bind("click", function() {  // enable interface how-to link
+    chrome.tabs.create({url:$(this).attr("href")}); 
+  });
 	
 	// hidden
 	$("#debug-wrapper").hide();
@@ -260,12 +266,12 @@ function main() {
 	
 	// query active tab
 	chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-		currTab = tabs[0];
+		self.currTab = tabs[0];
 		
-		title = currTab.title.substr(0, currTab.title.length - 9);
-		url = currTab.url;
+		self.title = self.currTab.title.substr(0, self.currTab.title.length - 9);
+		self.url = self.currTab.url;
 		
-		$("#videoUrl").val(url);
+		$("#videoUrl").val(self.url);
 		
 		// using a little timeout here, so the user can press '\' to choose the stream
 		setMessage("Probing VLC http interface...", true).show();
@@ -275,7 +281,7 @@ function main() {
 
 function toggleDoomConsole() {
 	DEBUG = true;
-	clearTimeout(timer);
+	clearTimeout(self.timer);
 	log("debug");
 	$("#debug-wrapper").toggle();
 }				
