@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html>
-	<meta name="author" content="azrafe7">
+  <meta name="author" content="azrafe7">
 <head>
-	<script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
-	<script type="text/javascript" src="js/ytdl.min.js"></script>
-	<link type="text/css" href="css/popup.css" rel="stylesheet" /> 
+  <script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
+  <script type="text/javascript" src="js/ytdl.min.js"></script>
+  <link type="text/css" href="css/popup.css" rel="stylesheet" /> 
 </head>
 <body >
-	<div id="header">
-		<span id="webstore" title="Go to webstore page">
-			<span id="ico"><img src="icons/icon-19.png" /></span>
-			<span id="title"></span>
-		</span>
-		<span id="doom">
-			<small>press </small>
-				<span class="key">
-					<b>v</b>
-				</span>
-			<small> to hack | debug</small>
-		</span>
-	</div>
-	
-	<div id="no-interface">
-		<div>Cannot connect to VLC http interface.</div>
-		<div>Read <a href="https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/" title="https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/">this</a> for instructions.</div>
-	</div>
-	
-	<div id="stream-info"></div>
-	<div id="msg"></div>
-	
-	<!-- testing stuff -->
-	<div id="debug-wrapper">
-		<input type="text" class=url id="vlcUrl" />
-		<button id="sendBtn" title="send command to VLC">send</button>
-		
-		<input type="text" class=url id="videoUrl" />
-		<button id="findBtn" title="retrieve streams (by YouTube ID)">find</button>		
-		
-		<!--
-		<input type="text" class=url id="subUrl" />
-		<button id="subBtn" title="load subtitle">sub</button>
-		-->
-		
-		<div class="controls">
-			<button id="prevBtn" title="previous in VLC (Z)">prev</button>		
-			<button id="pauseBtn" title="pause/unpause VLC (X)">pause</button>		
-			<button id="nextBtn" title="next in VLC (C)">next</button>		
-			<button id="clearBtn" title="clear playlist in VLC (Canc)">clear</button>		
-			<button id="enqueueBtn" title="enqueue in VLC (Q)">enqueue</button>		
-			<button id="playBtn" title="play in VLC (P)">play</button>		
-		</div>
-		
-		<div id="streams-wrapper">
-			Streams:
-			<div id="streams">
-			</div>
-		</div>
-	</div>
-	
-	<script type="text/javascript" src="js/popup.js"></script>
+  <div id="header">
+    <span id="webstore" title="Go to webstore page">
+      <span id="ico"><img src="icons/icon-19.png" /></span>
+      <span id="title"></span>
+    </span>
+    <span id="doom">
+      <small>press </small>
+        <span class="key">
+          <b>v</b>
+        </span>
+      <small> to hack | debug</small>
+    </span>
+  </div>
+  
+  <div id="no-interface">
+    <div>Cannot connect to VLC http interface.</div>
+    <div>Read <a href="https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/" title="https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/">this</a> for instructions.</div>
+  </div>
+  
+  <div id="stream-info"></div>
+  <div id="msg"></div>
+  
+  <!-- testing stuff -->
+  <div id="debug-wrapper">
+    <input type="text" class=url id="vlcUrl" />
+    <button id="sendBtn" title="send command to VLC">send</button>
+    
+    <input type="text" class=url id="videoUrl" />
+    <button id="findBtn" title="retrieve streams (by YouTube ID)">find</button>		
+    
+    <!--
+    <input type="text" class=url id="subUrl" />
+    <button id="subBtn" title="load subtitle">sub</button>
+    -->
+    
+    <div class="controls">
+      <button id="prevBtn" title="previous in VLC (Z)">prev</button>		
+      <button id="pauseBtn" title="pause/unpause VLC (X)">pause</button>		
+      <button id="nextBtn" title="next in VLC (C)">next</button>		
+      <button id="clearBtn" title="clear playlist in VLC (Canc)">clear</button>		
+      <button id="enqueueBtn" title="enqueue in VLC (Q)">enqueue</button>		
+      <button id="playBtn" title="play in VLC (P)">play</button>		
+    </div>
+    
+    <div id="streams-wrapper">
+      Streams:
+      <div id="streams">
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript" src="js/popup.js"></script>
 </body>
 </html>
