@@ -14,6 +14,7 @@ var VLC_HOST = "http://localhost";
 var VLC_PORT = "8080";
 var VLC_INTERFACE = VLC_HOST + ":" + VLC_PORT + "/requests/";
 var EXTENSION_URL = "https://chrome.google.com/webstore/detail/vlc-4-youtube-beta/jldiailifbdkepgpcojllmkbakleicab?hl=en";
+var PAUSE_YT_WHEN_SENDING_PLAY = true;
 
 var timer;
 var info;
@@ -40,6 +41,11 @@ function sendRequest(url, errorCallback, successCallback) {
 				errorCallback(xhr);
 			} else {
 				successCallback(xhr);
+        if (lastCommand == 'in_play' && PAUSE_YT_WHEN_SENDING_PLAY) {
+          console.log("pause yt");
+          chrome.tabs.executeScript(currTab.id, { code: pauseVideo.join('') });
+          appendToMessage("<br><sub>(YouTube video paused)</sub>");
+        }
 			}
 		}
 	}
@@ -59,6 +65,12 @@ function setMessage(msg, hideTitle) {
 	var $msg = $("#msg");
 	$("#stream-info").toggle(!hideTitle);
 	$msg.html(msg);
+	return $msg;
+}
+
+function appendToMessage(msg) {
+	var $msg = $("#msg");
+	$msg.html($msg.html() + msg);
 	return $msg;
 }
 
@@ -325,3 +337,19 @@ function ellipsizeMiddle(str, maxLength) {
 function log(...args) {
 	if (DEBUG) console.log.apply(console, args);
 }
+
+// adapted from https://gomakethings.com/stopping-youtube-vimeo-and-html5-videos-with-javascript/
+var pauseVideo = [
+  '(function() {',
+  '  var container = document.body;',
+  '  var iframe = container.querySelector("iframe");',
+  '  var video = container.querySelector("video");',
+  '  if (iframe !== null) {',
+  '  var iframeSrc = iframe.src;',
+  '    iframe.src = iframeSrc;',
+  '  }',
+  '  if (video !== null) {',
+  '    video.pause();',
+  '  }',
+  '})();'
+];
