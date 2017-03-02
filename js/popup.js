@@ -229,7 +229,7 @@ function main() {
     var vlcUrlInput = $("#vlcUrl").get(0);
     var videoUrlInput = $("#videoUrl").get(0);
 		if (document.activeElement != vlcUrlInput && document.activeElement != videoUrlInput) { 
-      if (event.keyCode == 220) { // doom console '\'
+      if (event.keyCode == 220 || event.keyCode == 86) { // doom console '\' or 'v'
         toggleDoomConsole();
       } else if (event.keyCode == 81) { // 'q' to enqueue
         log("en'q'");
