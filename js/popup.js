@@ -231,11 +231,19 @@ function main() {
 		if (document.activeElement != vlcUrlInput && document.activeElement != videoUrlInput) { 
       if (event.keyCode == 220 || event.keyCode == 86) { // doom console '\' or 'v'
         toggleDoomConsole();
-      } else if (event.keyCode == 81) { // 'q' to enqueue
+      } else if (event.keyCode == 81) { // 'q' - enqueue
         log("en'q'");
         $("#enqueueBtn").click();
-      } else if (event.keyCode == 80) { // 'p' to play
+      } else if (event.keyCode == 80) { // 'p' - play
         $("#playBtn").click();
+      } else if (event.keyCode == 90) { // 'z' - prev
+        $("#prevBtn").click();
+      } else if (event.keyCode == 88) { // 'x' - toggle pause
+        $("#pauseBtn").click();
+      } else if (event.keyCode == 67) { // 'c' - next
+        $("#nextBtn").click();
+      } else if (event.keyCode == 46) { // 'canc' - clear
+        $("#clearBtn").click();
       }
 		}
 	});
