@@ -10,7 +10,9 @@ var url;
 var xhr;
 
 var DEBUG = false;
-var VLC_INTERFACE = "http://localhost:8080/requests/";
+var VLC_HOST = "http://localhost";
+var VLC_PORT = "8080";
+var VLC_INTERFACE = VLC_HOST + ":" + VLC_PORT + "/requests/";
 var EXTENSION_URL = "https://chrome.google.com/webstore/detail/vlc-4-youtube-beta/jldiailifbdkepgpcojllmkbakleicab?hl=en";
 
 var timer;
@@ -184,8 +186,11 @@ function onVlcSuccess(xhr) {
 
 function onVlcError(xhr) {
 	$("#no-interface").show();
-	setMessage("", true);
-	log(xhr.status, xhr.statusText, xhr);
+  var errorText = xhr.statusText;
+  var intf = VLC_HOST + ":" + VLC_PORT;
+  if (xhr.status == 401) errorText = 'Unauthorized, please <a target="_blank" href="' + intf + '" title="' + intf + '">login here</a> first';
+	setMessage("<br>Received: " + errorText + " (" + xhr.status + ").", true);
+	log(xhr.status, errorText, xhr);
 }
 
 function interfaceFound(xhr) {
