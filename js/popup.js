@@ -234,6 +234,8 @@ function main() {
       } else if (event.keyCode == 81) { // 'q' to enqueue
         log("en'q'");
         $("#enqueueBtn").click();
+      } else if (event.keyCode == 80) { // 'p' to play
+        $("#playBtn").click();
       }
 		}
 	});
@@ -260,6 +262,11 @@ function main() {
 	$("#enqueueBtn").bind("click", function() { 
     if (info && info.formats) {
       enqueue(info.formats[0].url, { mustEncode: true }, info.title);
+    }
+	});
+	$("#playBtn").bind("click", function() { 
+    if (info && info.formats) {
+      play(info.formats[0].url, { mustEncode: true }, info.title);
     }
 	});
 
