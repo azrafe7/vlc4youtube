@@ -13,6 +13,7 @@ var timer;
 var info;
 var format;
 var title;
+var lastCommand;
 
 // execute main() when DOM is ready
 $(document).ready(main);
@@ -24,6 +25,9 @@ function sendRequest(url, errorCallback, successCallback) {
 	xhr.open("GET", url);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) {
+      var regex = /command=([^&;\s]+)/gi;
+      var matches = regex.exec(url);
+      lastCommand = matches && matches[1];
 			errorCallback = errorCallback || onVlcError;
 			successCallback = successCallback || onVlcSuccess;
 			if (xhr.status != 200) {
@@ -166,7 +170,9 @@ function onVlcSuccess(xhr) {
 	log(xhr.status, xhr.statusText, xhr);
 	
 	setTitle(format, title);
-	setMessage("<br>Command sent to VLC.", false).hide().fadeIn(400, "swing");
+  var lastCommandStr = "";
+  if (lastCommand) lastCommandStr = " (<b>" + lastCommand + "</b>)";
+	setMessage("<br>Command sent to VLC" + lastCommandStr + ".", false).hide().fadeIn(400, "swing");
 	
 	$("#no-interface").hide();
 	if (!DEBUG) timer = setTimeout(function() { window.close(); }, 4000); // close popup
@@ -208,13 +214,21 @@ function main() {
 	$("#videoUrl").bind("keyup", function(event) {
 		if (event.keyCode == 13) {
 			log("find");
+			log("find");
 			$("#findBtn").click();
 		}
 	});
 
 	$("body").bind("keyup", function(event) {
-		if (event.keyCode == 220 && document.activeElement != $("#vlcUrl").get(0)) { // doom console '\'
-			toggleDoomConsole();
+    var vlcUrlInput = $("#vlcUrl").get(0);
+    var videoUrlInput = $("#videoUrl").get(0);
+		if (document.activeElement != vlcUrlInput && document.activeElement != videoUrlInput) { 
+      if (event.keyCode == 220) { // doom console '\'
+        toggleDoomConsole();
+      } else if (event.keyCode == 81) { // 'q' to enqueue
+        log("en'q'");
+        $("#enqueueBtn").click();
+      }
 		}
 	});
 	
