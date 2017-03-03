@@ -1,5 +1,7 @@
-CHANGELOG
+# CHANGELOG:
 
+ - link to instructions on how-to-enable-vlc-web-interface on github (instead of ads-littered-third-party-site)
+ - retrieve streams even if vlc web interface is not available
  - pause youtube video when sending a play command to vlc
  - better error messages (unauthorized/login)
  - use https link to (third-party) instructions
@@ -15,4 +17,4 @@ CHANGELOG
  - settable shortcut key (default is ctrl+shift+V)
  - find all available streams for a given video (and choose the best one)
  - add a doom console
- - initial release
+ - initial release (v.0.1.3)
