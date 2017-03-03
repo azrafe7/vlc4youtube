@@ -96,34 +96,49 @@ function addFormatFieldTo(item) {
 }
 
 function findStreamsFor(url, probeOnly) {
+  $("#no-interface").hide();
   setMessage("Probing VLC http interface...", true).show();
   
-  sendRequest(VLC_INTERFACE + "status.json", onVlcError, function(xhr) { // probe VLC interface
-    interfaceFound();
-    setMessage("Retrieving preferred quality stream url...", true);
-    ytdl.getInfo(url, function(error, info) { // get video info
-      if (error) {
-        onInfoError({statusText:error});
-        return;
-      }
-      
-      populateStreams(null, info);
-      
-      var quality = "highest";
-      var filter = "video";
-      
-      var format = ytdl.utils.chooseFormat(info.formats, {quality: quality, filter: filter});
-      // if found, make it the first in the array
-      if (format && !(format instanceof Error)) {
-        info.formats.splice(info.formats.indexOf(format), 1);
-        info.formats.unshift(format);
-      } else {
-        onInfoError({statusText:format.message});
-        return;
-      }
-      
-      onInfoSuccess(null, info, probeOnly);
-    });
+  // probe VLC interface
+  sendRequest(VLC_INTERFACE + "status.json", 
+    function onError(xhr) {
+      onVlcError(xhr);
+      appendToMessage("<br><sub>(Retrieving streams anyway)</sub>");
+      getVideoInfo(url, false);
+    },
+    function onSuccess(xhr) {
+      onVlcSuccess(xhr);
+      interfaceFound();
+      setMessage("Retrieving streams...", true);
+      getVideoInfo(url, probeOnly);
+    }
+  );
+}
+
+function getVideoInfo(url, probeOnly) {
+  ytdl.getInfo(url, function(error, info) { // get video info
+    if (error) {
+      onInfoError({statusText:error});
+      return;
+    }
+    
+    populateStreams(null, info);
+    
+    var quality = "highest";
+    var filter = "video";
+    
+    var format = ytdl.utils.chooseFormat(info.formats, {quality: quality, filter: filter});
+    
+    // if found, make it the first in the array
+    if (format && !(format instanceof Error)) {
+      info.formats.splice(info.formats.indexOf(format), 1);
+      info.formats.unshift(format);
+    } else {
+      onInfoError({statusText:format.message});
+      return;
+    }
+    
+    onInfoSuccess(null, info, probeOnly);
   });
 }
 
@@ -164,8 +179,10 @@ function onInfoSuccess(xhr, data, probeOnly) {
   
   format = best.format;
   
-  setTitle(format, info.title);
-  setMessage("", false);
+  if (probeOnly) {
+    setTitle(format, info.title);
+    setMessage("", false);
+  }
   
   // play
   if (!probeOnly) {
@@ -236,7 +253,6 @@ function main() {
 
   $("#videoUrl").bind("keyup", function(event) {
     if (event.keyCode == 13) {
-      log("find");
       log("find");
       $("#findBtn").click();
     }
@@ -345,7 +361,7 @@ var pauseVideo = [
   '  var iframe = container.querySelector("iframe");',
   '  var video = container.querySelector("video");',
   '  if (iframe !== null) {',
-  '  var iframeSrc = iframe.src;',
+  '    var iframeSrc = iframe.src;',
   '    iframe.src = iframeSrc;',
   '  }',
   '  if (video !== null) {',
