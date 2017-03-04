@@ -53,3 +53,6 @@ If you get an authorization error, or are prompted for a login (as could be the 
 
  - [https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/](https://www.howtogeek.com/117261/how-to-activate-vlcs-web-interface-control-vlc-from-a-browser-use-any-smartphone-as-a-remote/)
  - [https://wiki.videolan.org/documentation:modules/http_intf/](https://wiki.videolan.org/documentation:modules/http_intf/)
+ - [https://wiki.videolan.org/VLC_HTTP_requests/](https://wiki.videolan.org/VLC_HTTP_requests/)
+ 
+ 
