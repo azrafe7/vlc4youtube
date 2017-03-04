@@ -218,7 +218,7 @@ function onVlcError(xhr) {
   var errorText = xhr.statusText;
   var intf = VLC_HOST + ":" + VLC_PORT;
   if (xhr.status == 401) errorText = 'Unauthorized, please <a target="_blank" href="' + intf + '" title="' + intf + '">login here</a> first';
-  setMessage("<br>Received: " + errorText + " (" + xhr.status + ").", true);
+  setMessage("<br>Received: " + errorText + " (<b>" + xhr.status + "</b>).", true);
   log(xhr.status, errorText, xhr);
 }
 
