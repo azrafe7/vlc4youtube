@@ -1,6 +1,7 @@
 # CHANGELOG:
 
- - v0.1.14: update node-ytdl-core to 0.14.1 (fixes 'Could not extract signature...')
+ - v0.1.17: update to node-ytdl-core 0.17.1 (reflect latest changes to youtube api)
+ - v0.1.14: update to node-ytdl-core 0.14.1 (fixes 'Could not extract signature...')
  - link to instructions on how-to-enable-vlc-web-interface on github (instead of ads-littered-third-party-site)
  - retrieve streams even if vlc web interface is not available
  - pause youtube video when sending a play command to vlc
