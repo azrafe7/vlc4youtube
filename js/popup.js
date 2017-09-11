@@ -88,7 +88,7 @@ function enqueue(url, options, title) {
 
 function addFormatFieldTo(item) {
   item.format = item.itag + " - " + 
-          item.type.match(/.*?;/) + " " +
+          (item.type ? item.type.match(/.*?;/) + " " : "") +
           (item.resolution || "[audio only]") + " " +
           (item.audioEncoding ? "" : "[video only]") + 
           " (" + (item.quality || item.quality_label || (item.audioBitrate + "br")) + ")";
