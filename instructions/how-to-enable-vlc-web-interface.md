@@ -27,7 +27,7 @@ As I said you'll need at least version 2.0 of VLC installed. Then to activate th
 
 **5.** **Done!**
 
-To check that it is working just open a browser and point it to [http://localhost:8080](http://localhost:8080).
+To check that it is working just open a browser in the same computer running VLC and point it to [http://localhost:8080](http://localhost:8080).
 
 You should see the web interface.
 
@@ -47,6 +47,13 @@ If you get an authorization error, or are prompted for a login (as could be the 
  **3.** reopen `localhost:8080` in your browser and insert the password when asked, **but remember to leave the `User Name` field blank!**
 
 >   ![vlc-blank-user.png](vlc-blank-user.png)
+
+VLC should be listening for incoming connections in port 8080. In Linux, you can check this with `netstat -tnpl | grep vlc`. You should see a line similar to this one:
+
+```
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      7958/vlc
+```
 
 
 # References
