@@ -1,4 +1,4 @@
-// popup
+// popup.js
 // coded by azrafe7
 
 'use strict';
@@ -13,6 +13,8 @@ var DEBUG = false;
 var VLC_HOST = "http://localhost";
 var VLC_PORT = "8080";
 var VLC_INTERFACE = VLC_HOST + ":" + VLC_PORT + "/requests/";
+var VLC_USER = "";
+var VLC_PASS = "";
 var EXTENSION_URL = "https://chrome.google.com/webstore/detail/vlc-4-youtube-beta/jldiailifbdkepgpcojllmkbakleicab?hl=en";
 var PAUSE_YT_WHEN_SENDING_PLAY = true;
 
@@ -29,7 +31,8 @@ function sendRequest(url, errorCallback, successCallback) {
   log("sending", url);
   $("#vlcUrl").val(url);
   xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
+  xhr.open("GET", url, true, VLC_USER, VLC_PASS);
+  xhr.withCredentials = true;
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4) {
       var regex = /command=([^&;\s]+)/gi;
@@ -49,7 +52,8 @@ function sendRequest(url, errorCallback, successCallback) {
       }
     }
   }
-  xhr.send();
+  console.log("XHR:", xhr);
+  xhr.send(null);
 }
 
 function setTitle(format, title) {
