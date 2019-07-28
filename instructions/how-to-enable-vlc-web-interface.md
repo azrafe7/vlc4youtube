@@ -48,7 +48,9 @@ If you get an authorization error, or are prompted for a login (as could be the 
 
 >   ![vlc-blank-user.png](vlc-blank-user.png)
 
-VLC should be listening for incoming connections in port 8080. In Linux, you can check this with `netstat -tnpl | grep vlc`. You should see a line similar to this one:
+VLC should be listening for incoming connections in port 8080 (restart VLC if it still doesn't work). 
+
+On Linux, you can check this with `netstat -tnpl | grep vlc`. You should see a line similar to this one:
 
 ```
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
