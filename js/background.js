@@ -10,6 +10,8 @@ var currentTab;
 var VLC_HOST = "http://localhost";
 var VLC_PORT = "8080";
 var VLC_INTERFACE = VLC_HOST + ":" + VLC_PORT + "/requests/";
+//var EXTENSION_ID = "nofmfopnoamalaifhaklkpnonoaacfmk"; // debug extension id
+var EXTENSION_ID = "jldiailifbdkepgpcojllmkbakleicab"; // web store extension id
 
 
 init();
@@ -46,7 +48,7 @@ function responseListener(details) {
   var rules = [
     {
       "name": "Access-Control-Allow-Origin",
-      "value": "chrome-extension://nofmfopnoamalaifhaklkpnonoaacfmk"
+      "value": "chrome-extension://" + EXTENSION_ID
     },
     {
       "name": "Access-Control-Allow-Credentials",
