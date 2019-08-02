@@ -1,5 +1,6 @@
 # CHANGELOG:
 
+ - v0.1.23: make it compatible with Firefox (see commit messages)
  - v0.1.22: update to node-ytdl-core 0.29.4 (fixes title extraction)
  - v0.1.21: fix localhost CORS issue in latest chrome versions (by using webRequest API)
  - update to node-ytdl-core 0.29.3

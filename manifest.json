@@ -16,7 +16,7 @@
     "default_popup" : "popup.html",
     "default_title" : "Open this video in VLC"
   },
-  "permissions" : ["webRequest", "webRequestBlocking", "*://*.youtube.com/*", "http://localhost:8080/*"],
+  "permissions" : ["tabs", "webRequest", "webRequestBlocking", "*://*.youtube.com/*", "http://localhost/*"],
   "commands" : {
     "_execute_page_action" : {
       "suggested_key" : {
@@ -24,6 +24,5 @@
       }
     }
   },
-  "update_url" : "http://clients2.google.com/service/update2/crx",
-  "version" : "0.1.22"
+  "version" : "0.1.23"
 }
