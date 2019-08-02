@@ -5,7 +5,7 @@
 <head>
   <script type="text/javascript" src="js/jquery.1.7.2.min.js"></script>
   <script type="text/javascript" src="js/ytdl.min.js"></script>
-  <link type="text/css" href="css/popup.css" rel="stylesheet" /> 
+  <link type="text/css" href="css/popup.css" rel="stylesheet" />
 </head>
 <body >
   <div id="header">
@@ -21,44 +21,44 @@
       <small> to hack | debug</small>
     </span>
   </div>
-  
+
   <div id="no-interface">
     <div>Cannot connect to VLC http interface.</div>
     <div>Read <a href="https://github.com/azrafe7/vlc4youtube/blob/master/instructions/how-to-enable-vlc-web-interface.md" title="https://github.com/azrafe7/vlc4youtube/blob/master/instructions/how-to-enable-vlc-web-interface.md">this</a> for instructions.</div>
   </div>
-  
+
   <div id="stream-info"></div>
   <div id="msg"></div>
-  
+
   <!-- testing stuff -->
   <div id="debug-wrapper">
     <input type="text" class=url id="vlcUrl" />
     <button id="sendBtn" title="send command to VLC">send</button>
-    
+
     <input type="text" class=url id="videoUrl" />
-    <button id="findBtn" title="retrieve streams (by YouTube ID)">find</button>		
-    
+    <button id="findBtn" title="retrieve streams (by YouTube ID)">find</button>
+
     <!--
     <input type="text" class=url id="subUrl" />
     <button id="subBtn" title="load subtitle">sub</button>
     -->
-    
+
     <div class="controls">
-      <button id="prevBtn" title="previous in VLC (Z)">prev</button>		
-      <button id="pauseBtn" title="pause/unpause VLC (X)">pause</button>		
-      <button id="nextBtn" title="next in VLC (C)">next</button>		
-      <button id="clearBtn" title="clear playlist in VLC (Canc)">clear</button>		
-      <button id="enqueueBtn" title="enqueue in VLC (Q)">enqueue</button>		
-      <button id="playBtn" title="play in VLC (P)">play</button>		
+      <button id="prevBtn" title="previous in VLC (Z)">prev</button>
+      <button id="pauseBtn" title="pause/unpause VLC (X)">pause</button>
+      <button id="nextBtn" title="next in VLC (C)">next</button>
+      <button id="clearBtn" title="clear playlist in VLC (Canc)">clear</button>
+      <button id="enqueueBtn" title="enqueue in VLC (Q)">enqueue</button>
+      <button id="playBtn" title="play in VLC (P)">play</button>
     </div>
-    
+
     <div id="streams-wrapper">
       Streams:
       <div id="streams">
       </div>
     </div>
   </div>
-  
+
   <script type="text/javascript" src="js/popup.js"></script>
 </body>
 </html>
