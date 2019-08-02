@@ -35,7 +35,7 @@ var IS_CHROME = BROWSER == "Chrome";
 var IS_EDGE = BROWSER == "Edge";
 
 var CHROME_WEBSTORE_URL = "https://chrome.google.com/webstore/detail/vlc-4-youtube-beta/";
-var FIREFOX_WEBSTORE_URL = "https://addons.mozilla.org/en-US/firefox/addon/vlc-4-youtube-beta/";
+var FIREFOX_WEBSTORE_URL = "https://addons.mozilla.org/en-US/firefox/addon/vlc-4-youtube-beta-4-firefox/";
 
 
 init();
