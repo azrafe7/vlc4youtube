@@ -1,5 +1,6 @@
 # CHANGELOG:
 
+ - v0.1.25: update to jQuery 3.4.1 (as requested by FF reviewers)
  - v0.1.24: no need for the "tabs" permission (on Chrome at least)
  - v0.1.23: make it compatible with Firefox (see commit messages)
  - v0.1.22: update to node-ytdl-core 0.29.4 (fixes title extraction)
