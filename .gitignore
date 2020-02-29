@@ -1,6 +1,7 @@
 package/*/
 package/*.*
 !package/.gitkeep
+!package/*.txt
 package.zip
 
 node-ytdl-core-master/*/

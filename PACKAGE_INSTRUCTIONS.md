@@ -20,7 +20,8 @@ Only code of this extension's dependencies are minified (to have a smaller bundl
 ## Steps to reproduce the build
 Clone the repository for the extension at https://github.com/azrafe7/vlc4youtube.
 
-Launch `update-ytdl.ps1` (a PowerShell script) to download the latest version of node-ytdl-core (it will be put in the `node-ytdl-core-master` folder). The script will also extract the needed files and minify them into a single file.
+Launch `update-ytdl.ps1` (a PowerShell script) to download the latest version of node-ytdl-core (it will be put in the `node-ytdl-core-master` folder). 
+The script will also extract the needed files and minify them into a single file.
 
 Launch `package-chrome.bat` to create a packaged extension zip file for Chrome (inside the `package` folder).
 
