@@ -1,5 +1,6 @@
 # CHANGELOG:
 
+ - add build instruction and scripts for updating node-ytdl-core and package the extension
  - v0.2.0: update to node-ytdl-core 2.0.0
  - v0.1.25: update to jQuery 3.4.1 (as requested by FF reviewers)
  - v0.1.24: no need for the "tabs" permission (on Chrome at least)
