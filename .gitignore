@@ -2,3 +2,7 @@ package/*/
 package/*.*
 !package/.gitkeep
 package.zip
+
+node-ytdl-core-master/*/
+node-ytdl-core-master/*.json
+node-ytdl-core-master/*.zip
