@@ -113,12 +113,7 @@ function findStreamsFor(url, probeOnly) {
 }
 
 function getVideoInfo(url, probeOnly) {
-  ytdl.getInfo(url, function(error, info) { // get video info
-    if (error) {
-      onInfoError({statusText:error});
-      return;
-    }
-
+  ytdl.getInfo(url).then(function(info) { // get video info
     populateStreams(null, info);
 
     var quality = "highest";
@@ -136,6 +131,9 @@ function getVideoInfo(url, probeOnly) {
     }
 
     onInfoSuccess(null, info, probeOnly);
+  })
+  .catch(function(error) {
+      onInfoError({statusText:error});
   });
 }
 
