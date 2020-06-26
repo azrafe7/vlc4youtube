@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 Clear
 
-$browserSuffix = ".firefox"   # <- JUST CHANGE THIS ("" or ".firefox")
+$browserSuffix = ".firefox"   # <- JUST CHANGE THIS (".chrome" or ".firefox")
 $packageOutputFolder = "package"
 $packageFileList = "$packageOutputFolder/package-list$browserSuffix.txt"
 $manifestFile = "manifest$browserSuffix.json"

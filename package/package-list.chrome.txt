@@ -6,4 +6,4 @@
 ./CHANGELOG.md
 ./popup.html
 ./LICENSE.txt
-./manifest.json
+./manifest.chrome.json

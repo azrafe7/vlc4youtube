@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 Clear
 
-$browserSuffix = ".chrome"   # <- JUST CHANGE THIS ("" or ".chrome" or ".firefox")
+$browserSuffix = ".chrome"   # <- JUST CHANGE THIS (".chrome" or ".firefox")
 $packageOutputFolder = "package"
 $packageFileList = "$packageOutputFolder/package-list$browserSuffix.txt"
 $manifestFile = "manifest$browserSuffix.json"
@@ -48,7 +48,7 @@ Write-Host "$command $arguments" -ForegroundColor Green
 # rename manifest file inside zipped package (if needed)
 if (-Not [string]::IsNullOrWhiteSpace($browserSuffix)) {
     $command = $sevenZipExe
-    $arguments = "rn", $packageOutputFile, "manifest.json", $manifestFile
+    $arguments = "rn", $packageOutputFile, $manifestFile, "manifest.json"
     Write-Host ""
     Write-Host "Renaming '$manifestFile' to 'manifest.json' inside '$packageOutputFile'..." -ForegroundColor Yellow
     Write-Host "$command $arguments" -ForegroundColor Green
