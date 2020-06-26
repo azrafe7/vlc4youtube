@@ -163,7 +163,7 @@ function populateStreams(xhr, data) {
     var div = $("<div>").append(a);
     a.bind("click", function() {
       setTitle($(this).attr("data-format"));
-      play($(this).attr("href"), { mustEncode: true }, info.title);
+      play($(this).attr("href"), { mustEncode: true }, info.videoDetails.title);
     });
     streams.append(div);
   }
@@ -177,13 +177,13 @@ function onInfoSuccess(xhr, data, probeOnly) {
   format = best.format;
 
   if (probeOnly) {
-    setTitle(format, info.title);
+    setTitle(format, info.videoDetails.title);
     setMessage("", false);
   }
 
   // play
   if (!probeOnly) {
-    play(best.url, { mustEncode: true }, info.title);
+    play(best.url, { mustEncode: true }, info.videoDetails.title);
   }
 
   //$("#vlcUrl").val(bgPage.VLC_INTERFACE + "status.json?command=in_play&input=" + encodeURIComponent(url));
@@ -302,12 +302,12 @@ function main() {
   });
   $("#enqueueBtn").bind("click", function() {
     if (info && info.formats) {
-      enqueue(info.formats[0].url, { mustEncode: true }, info.title);
+      enqueue(info.formats[0].url, { mustEncode: true }, info.videoDetails.title);
     }
   });
   $("#playBtn").bind("click", function() {
     if (info && info.formats) {
-      play(info.formats[0].url, { mustEncode: true }, info.title);
+      play(info.formats[0].url, { mustEncode: true }, info.videoDetails.title);
     }
   });
 
