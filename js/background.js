@@ -122,4 +122,21 @@ function init() {
     {urls: [VLC_HOST + "/*"]},
     []
   );
+
+  // TODO: remove this (and probably background_script persistence) once https://github.com/fent/node-ytdl-core/issues/632 is resolved (thanks javierlm)
+  // patch headers
+  let extraInfoSpec = ['blocking', 'requestHeaders'];
+  if (!IS_FIREFOX) extraInfoSpec.push('extraHeaders');
+
+  chrome.webRequest.onBeforeSendHeaders.addListener((details) => {
+    let header = details.requestHeaders.find(h => h.name === 'Cookie');
+    if (header) header.value = '';
+    return { requestHeaders: details.requestHeaders };
+  }, {
+    urls: [
+      'https://www.youtube.com/watch?v=*',
+      'https://www.youtube.com/get_video_info*'
+    ],
+    types: ['xmlhttprequest'],
+  }, extraInfoSpec);
 }

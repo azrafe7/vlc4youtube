@@ -1,6 +1,7 @@
 {
   "background" : {
-    "scripts" : ["js/background.js"]
+    "scripts" : ["js/background.js"],
+    "persistent": true
   },
   "description" : "Open YouTube videos in VLC.",
   "icons" : {
@@ -24,5 +25,5 @@
       }
     }
   },
-  "version" : "0.2.0"
+  "version" : "0.3.1"
 }
