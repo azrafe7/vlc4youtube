@@ -48,9 +48,13 @@ Write-Host "$command $arguments" -ForegroundColor Green
 # rename manifest file inside zipped package (if needed)
 if (-Not [string]::IsNullOrWhiteSpace($browserSuffix)) {
     $command = $sevenZipExe
-    $arguments = "rn", $packageOutputFile, $manifestFile, "manifest.json"
     Write-Host ""
-    Write-Host "Renaming '$manifestFile' to 'manifest.json' inside '$packageOutputFile'..." -ForegroundColor Yellow
+    $arguments = "a", "-tzip", $packageOutputFile, $manifestFile
+    Write-Host "Add '$manifestFile' to '$packageOutputFile'..." -ForegroundColor Yellow
+    Write-Host "$command $arguments" -ForegroundColor Green
+    & $command $arguments
+    $arguments = "rn", $packageOutputFile, $manifestFile, "manifest.json"
+    Write-Host "Add '$manifestFile' as 'manifest.json' inside '$packageOutputFile'..." -ForegroundColor Yellow
     Write-Host "$command $arguments" -ForegroundColor Green
     & $command $arguments
 }

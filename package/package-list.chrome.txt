@@ -1,9 +1,0 @@
-./js
-./css
-./icons
-./README.md
-./PACKAGE_INSTRUCTIONS.md
-./CHANGELOG.md
-./popup.html
-./LICENSE.txt
-./manifest.chrome.json

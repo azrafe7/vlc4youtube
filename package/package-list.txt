@@ -6,4 +6,3 @@
 ./CHANGELOG.md
 ./popup.html
 ./LICENSE.txt
-./manifest.firefox.json
