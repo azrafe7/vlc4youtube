@@ -1,5 +1,6 @@
 # CHANGELOG:
 
+ - fix "[audio only]" and "[video only]" in streams' titles
  - v0.3.1: update to node-ytdl-core 3.1.1
  - replace info.title with info.videoDetails.title, and replace callback style with promise style for ytdl.getInfo() (both deprecated in latest node-ytdl-core)
  - temp fix for "Error parsing info: JSON.parse(...).reduce is not a function" using workaround mentioned in https://github.com/fent/node-ytdl-core/issues/632
