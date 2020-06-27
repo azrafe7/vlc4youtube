@@ -12,7 +12,7 @@ var xhr;
 var DEBUG = false;
 var PAUSE_YT_WHEN_SENDING_PLAY = true;
 
-var timer;
+var timerIds = [];
 var info;
 var format;
 var title;
@@ -207,7 +207,7 @@ function onVlcSuccess(xhr) {
   setMessage("<br>Command sent to VLC" + lastCommandStr + ".", false).hide().fadeIn(400, "swing");
 
   $("#no-interface").hide();
-  if (!DEBUG) self.timer = setTimeout(function() { window.close(); }, 4000); // close popup
+  if (!DEBUG) self.timerIds.push(setTimeout(function() { window.close(); }, 4000)); // close popup
 }
 
 function onVlcError(xhr) {
@@ -329,8 +329,10 @@ function main() {
 
 function toggleDoomConsole() {
   DEBUG = true;
-  clearTimeout(self.timer);
-  log("debug");
+  for (let timerId of self.timerIds) {
+    clearTimeout(timerId);
+  }
+  self.timerIds = [];
   $("#debug-wrapper").toggle();
 }
 
