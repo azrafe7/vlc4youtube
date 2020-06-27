@@ -85,12 +85,14 @@ function enqueue(url, options, title) {
 
 function addFormatFieldTo(item) {
   item.format = item.itag + " - " +
-          (item.type ? item.type.match(/.*?;/) + " " : "") +
+          //(item.mimeType ? item.mimeType.match(/.*?;/) + " " : "") +
+          item.container + " " +
           ((item.hasAudio && !item.hasVideo) ? "[audio only] " : "") +
           ((!item.hasAudio && item.hasVideo) ? "[video only] " : "");
   let itemQuality = (item.quality || " ") + (item.quality_label || " ") + (item.audioBitrate ? item.audioBitrate + "br" : " ");
-  itemQuality = itemQuality.trim().replace(/\s+/, ' ');
+  itemQuality = itemQuality.trim();
   item.format += " (" + itemQuality + ")";
+  item.format = item.format.replace(/\s+/g, ' ');
   return item;
 }
 
@@ -155,9 +157,9 @@ function populateStreams(xhr, data) {
   for (let o in info.formats) {
     var i = info.formats[o];
     var a = $("<a>").attr({
-      "href":i.url,
-      "data-format":i.format,
-      "title":ellipsizeMiddle(i.url, 80)
+      "href": i.url,
+      "data-format": i.format,
+      "title": `${ellipsizeMiddle(i.url, 80)}\nvideoCodec: ${i.videoCodec || 'none'}  |  audioCodec: ${i.audioCodec || 'none'}`
     }).text(i.format);
 
     var div = $("<div>").append(a);
