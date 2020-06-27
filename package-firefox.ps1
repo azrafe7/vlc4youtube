@@ -3,7 +3,7 @@ Clear
 
 $browserSuffix = ".firefox"   # <- JUST CHANGE THIS (".chrome" or ".firefox")
 $packageOutputFolder = "package"
-$packageFileList = "$packageOutputFolder/package-list$browserSuffix.txt"
+$packageFileList = "$packageOutputFolder/package-list.txt"
 $manifestFile = "manifest$browserSuffix.json"
 $packageName = "vlc4youtube"
 
