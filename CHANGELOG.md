@@ -1,6 +1,7 @@
 # CHANGELOG:
 
- - fix clearing timeoutIds when opening the doom-console
+ - v0.3.2: add container info to streams' titles, and audio/videoCodec info to tooltips
+ - fix clearing timeoutIds when opening the doom console
  - remove background script persistence
  - fix "[audio only]" and "[video only]" in streams' titles
  - v0.3.1: update to node-ytdl-core 3.1.1
