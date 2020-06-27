@@ -3,6 +3,7 @@ package/*.*
 !package/.gitkeep
 !package/*.txt
 package.zip
+manifest.json
 
 node-ytdl-core-master/*/
 node-ytdl-core-master/*.json
