@@ -54,7 +54,7 @@ if (-Not [string]::IsNullOrWhiteSpace($browserSuffix)) {
     Write-Host "$command $arguments" -ForegroundColor Green
     & $command $arguments
     $arguments = "rn", $packageOutputFile, $manifestFile, "manifest.json"
-    Write-Host "Add '$manifestFile' as 'manifest.json' inside '$packageOutputFile'..." -ForegroundColor Yellow
+    Write-Host "Rename '$manifestFile' to 'manifest.json' inside '$packageOutputFile'..." -ForegroundColor Yellow
     Write-Host "$command $arguments" -ForegroundColor Green
     & $command $arguments
 }
