@@ -1,7 +1,7 @@
 {
   "background" : {
     "scripts" : ["js/background.js"],
-    "persistent": true
+    "persistent": false
   },
   "description" : "Open YouTube videos in VLC.",
   "icons" : {
@@ -17,7 +17,7 @@
     "default_popup" : "popup.html",
     "default_title" : "Open this video in VLC"
   },
-  "permissions" : ["webRequest", "webRequestBlocking", "*://*.youtube.com/*", "http://localhost/*"],
+  "permissions" : ["tabs", "webRequest", "webRequestBlocking", "*://*.youtube.com/*", "http://localhost/*"],
   "commands" : {
     "_execute_page_action" : {
       "suggested_key" : {
@@ -25,5 +25,5 @@
       }
     }
   },
-  "version" : "0.3.1"
+  "version" : "0.3.2"
 }
